@@ -1,0 +1,14 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div *matNoDataRow>No data matching filter criteria</div>
+  <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+    <mat-header-cell *matHeaderCellDef mat-sort-header style="text-transform: capitalize;"> {{column}} </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element[column]}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row (click)="onRowClick(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</table>
+

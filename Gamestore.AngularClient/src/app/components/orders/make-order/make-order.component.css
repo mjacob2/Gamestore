@@ -1,0 +1,19 @@
+.example-card {
+  margin-top: 26px;
+  max-width: 400px;
+}
+
+.bank-header-image {
+  background-image: url('https://businessprocedures.rdb.rw/media/Bank%20Icon_2.jpg');
+  background-size: cover;
+}
+
+.visa-header-image {
+  background-image: url('https://logos-world.net/wp-content/uploads/2020/05/Visa-Logo-700x394.png');
+  background-size: cover;
+}
+
+.ibox-header-image {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Open_cardboard_box_husky.png/600px-Open_cardboard_box_husky.png?20081011131124');
+  background-size: cover;
+}

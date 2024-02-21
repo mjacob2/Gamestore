@@ -1,0 +1,56 @@
+<h1>Select payment method</h1>
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+<div style="margin-left:26px">
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="bank-header-image"></div>
+      <mat-card-title>Bank</mat-card-title>
+      <mat-card-subtitle>Bank</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Make secure payment with your bank.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="payWithBank()" mat-button>PAY WITH BANK</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="visa-header-image"></div>
+      <mat-card-title>Visa</mat-card-title>
+      <mat-card-subtitle>visa</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Pay 10% less with visa payment!
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="payWithVisa()" mat-button>PAY WITH VISA</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="ibox-header-image"></div>
+      <mat-card-title>Ibox terminal</mat-card-title>
+      <mat-card-subtitle>ibox</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Pay 10% less with secure Ibox payment!
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="payWithIBox()" mat-button>PAY WITH IBOX</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

@@ -1,0 +1,23 @@
+<h1>Games</h1>
+
+<app-filtering-options (filter)="onFilter($event)"
+                       [displayedFilters]="displayedFilters">
+
+</app-filtering-options>
+
+<app-table [errorMessage]="errorMessage"
+           [isLoading]="isLoading"
+           [dataSource]="dataSource"
+           [route]="'games'"
+           [displayedColumns]="displayedColumns">
+</app-table>
+
+<button mat-button (click)="showAll()">Show all</button>
+<mat-paginator style="margin-top: 20px; margin-bottom: 70px" (page)="handlePaginatorEvent($event)" [pageSizeOptions]="paginatorPageSizeOptions" [length]="totalGamesCount"
+               [pageSize]="pageSize" [showFirstLastButtons]="true" [pageIndex]="pageIndex">
+</mat-paginator>
+
+<button style="position: fixed; right: 2em; bottom: 2em" (click)="openAddGameBottomSheet()" class="bottom-right" mat-fab extended color="primary">
+  <mat-icon>add</mat-icon>
+  New Game
+</button>

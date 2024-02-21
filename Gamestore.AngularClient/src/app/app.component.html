@@ -1,0 +1,50 @@
+<mat-toolbar style="display: flex; justify-content: space-between; align-items: center;">
+
+  <div style="display: flex; align-items: center;">
+    <span>Gamestore</span>
+
+    <button style="margin-left:50px" routerLink="/games" routerLinkActive="active-link-profiles" mat-button>Games</button>
+
+    <button style="margin-left:10px" routerLink="/publishers" routerLinkActive="active-link-publishers" mat-button>Publishers</button>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+
+      <button (click)="openAddGenreBottomSheet()" mat-menu-item>
+        <mat-icon>add</mat-icon>
+        <span>new Genre</span>
+      </button>
+
+      <button (click)="openAddPlatformBottomSheet()" mat-menu-item>
+        <mat-icon>add</mat-icon>
+        <span>new Platform</span>
+      </button>
+
+      <button routerLink="/orders" mat-menu-item>
+        <mat-icon>history</mat-icon>
+        <span>my games orders</span>
+      </button>
+
+      <button routerLink="/orders/history" mat-menu-item>
+        <mat-icon>history</mat-icon>
+        <span>my all orders</span>
+      </button>
+
+    </mat-menu>
+  </div>
+
+  <button routerLink="/cart" mat-icon-button>
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+<div style="padding:16px">
+  <router-outlet></router-outlet>
+</div>
+
+
+

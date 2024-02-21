@@ -1,0 +1,17 @@
+<h1>All Orders History</h1>
+
+
+<app-filtering-options (filter)="onFilter($event)"
+                       [displayedFilters]="displayedFilters">
+
+</app-filtering-options>
+
+
+
+
+<app-table [errorMessage]="errorMessage"
+           [isLoading]="isLoading"
+           [dataSource]="dataSource"
+           [route]="'orders'"
+           [displayedColumns]="displayedColumns">
+</app-table>

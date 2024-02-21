@@ -1,0 +1,14 @@
+<h1>Publishers</h1>
+
+
+<app-table [errorMessage]="errorMessage"
+           [isLoading]="isLoading"
+           [dataSource]="dataSource"
+           [route]="'publishers'"
+           [displayedColumns]="displayedColumns">
+</app-table>
+
+<button style="position: fixed; right: 2em; bottom: 2em" (click)="openAddPublisherBottomSheet()" class="bottom-right" mat-fab extended color="primary">
+  <mat-icon>add</mat-icon>
+  New Publisher
+</button>

@@ -1,0 +1,66 @@
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+<div *ngIf="game">
+
+  <h1>Game</h1>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>{{game.name}}</mat-card-title>
+      <mat-card-subtitle>  {{game.gameAlias}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-list>
+
+        <mat-list-item>
+          <mat-icon matListItemIcon>copyright</mat-icon>
+          <div matListItemTitle>{{game.publisher}}</div>
+          <div matListItemLine>publisher</div>
+        </mat-list-item>
+
+        <mat-list-item *ngFor="let platform of game.platforms">
+          <mat-icon matListItemIcon>sports_esports</mat-icon>
+          <div matListItemTitle>{{platform.type}}</div>
+          <div matListItemLine>platform</div>
+        </mat-list-item>
+
+        <mat-list-item *ngFor="let genre of game.genres">
+          <mat-icon matListItemIcon>info</mat-icon>
+          <div matListItemTitle>{{genre.name}}</div>
+          <div matListItemLine>Genre</div>
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-icon matListItemIcon>sell</mat-icon>
+          <div matListItemTitle>{{game.price | currency}}</div>
+          <div matListItemLine>{{game.unitInStock}} units in stock</div>
+        </mat-list-item>
+
+      </mat-list>
+
+      {{game.description}}
+
+      Discontinued: {{game.discontinued}}
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="downloadGame()" mat-button>
+        <mat-icon>download</mat-icon> DOWNLOAD
+      </button>
+
+      <button mat-button routerLink="/games/{{game.gameAlias}}/comments">
+        <mat-icon>comment</mat-icon> SEE COMMENTS
+      </button>
+    </mat-card-actions>
+
+    <button style="margin-left:auto; margin-right:16px; margin-bottom: 16px" mat-fab extended color="accent" (click)="buyGame()">
+      <mat-icon>add_shopping_cart</mat-icon> Add to cart
+    </button>
+
+  </mat-card>
+
+</div>
+

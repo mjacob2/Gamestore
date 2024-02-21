@@ -1,0 +1,28 @@
+<h2>Add Platform</h2>
+
+<form class="example-form" #addPlatformForm="ngForm" (ngSubmit)="onSubmit(addPlatformForm)">
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Type</mat-label>
+    <mat-select required ngModel name="type">
+      <mat-option *ngFor="let platform of platforms" [value]="platform.value">
+        {{platform.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput ngModel name="description" type="text">
+  </mat-form-field>
+
+  <app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+  <div *ngIf="!isLoading" class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">Add</button>
+    <button type="button" (click)="closeBottomSheet()" style="margin-left: 16px;" mat-button>Cancel</button>
+  </div>
+
+</form>
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>

@@ -1,0 +1,39 @@
+<h2>Add Comment</h2>
+
+
+
+<form class="example-form" #addCommentForm="ngForm" (ngSubmit)="onSubmit(addCommentForm)">
+
+  <div *ngIf="comment">
+    <p class="comment-reply" *ngIf="commentType === 0">
+      <b>As reply to: </b>{{comment.authorName}}, {{comment.body}}
+    </p>
+
+
+
+  </div>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Author Name</mat-label>
+    <input required matInput ngModel name="authorName" type="text">
+  </mat-form-field>
+
+  <p *ngIf="commentType === 1">
+    <b>Quote: </b> <i>{{quotedBody}}</i>
+  </p>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Comment</mat-label>
+    <textarea required matInput ngModel name="body" style="height: 250px;"></textarea>
+  </mat-form-field>
+
+  <app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+  <div *ngIf="!isLoading" class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">Add</button>
+    <button type="button" (click)="closeBottomSheet()" style="margin-left: 16px;" mat-button>Cancel</button>
+  </div>
+
+</form>
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>

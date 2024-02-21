@@ -1,0 +1,95 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filters
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form class="example-form" #filter="ngForm" (ngSubmit)="onSubmit(filter)">
+
+      <mat-form-field *ngIf="displayedFilters.gameName" appearance="outline" class="example-full-width">
+        <mat-label>Game Name</mat-label>
+        <input matInput ngModel name="filterName" type="text">
+      </mat-form-field>
+
+      <div *ngIf="displayedFilters.publisher">
+        <mat-spinner style="height: 36px;" *ngIf="publishers.length <= 0"></mat-spinner>
+        <mat-form-field *ngIf="publishers.length > 0" appearance="outline" class="example-full-width">
+          <mat-label>Publisher</mat-label>
+          <mat-select ngModel name="publisher" multiple>
+            <mat-option *ngFor="let publisher of publishers" [value]="publisher.companyName">
+              {{publisher.companyName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="displayedFilters.platform">
+        <mat-spinner style="height: 36px;" *ngIf="platforms.length <= 0"></mat-spinner>
+        <mat-form-field *ngIf="platforms.length > 0" appearance="outline" class="example-full-width">
+          <mat-label>Platform</mat-label>
+          <mat-select ngModel name="platform" multiple>
+            <mat-option *ngFor="let platform of platforms" [value]="platform.type">
+              {{platform.type}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="displayedFilters.genre">
+        <mat-spinner style="height: 36px;" *ngIf="genres.length <= 0"></mat-spinner>
+        <mat-form-field *ngIf="genres.length > 0" appearance="outline" class="example-full-width">
+          <mat-label>Genre</mat-label>
+          <mat-select ngModel name="genre" multiple>
+            <mat-option *ngFor="let genre of genres" [value]="genre.id">
+              {{genre.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="displayedFilters.dateRange">
+        <mat-form-field appearance="outline">
+          <mat-label>Date range</mat-label>
+          <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+
+          <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        </mat-form-field>
+        <button mat-button (click)="resetRange()">Clear Dates</button>
+      </div>
+
+      <div *ngIf="displayedFilters.priceRange">
+        <mat-slider range min="1" max="500">
+          <input matSliderStartThumb [(ngModel)]="priceRange[0]" name="startPrice">
+          <input matSliderEndThumb [(ngModel)]="priceRange[1]" name="endPrice">
+        </mat-slider>
+        <p>Price range: ${{priceRange[0]}} - ${{priceRange[1]}}</p>
+      </div>
+
+      <div *ngIf="displayedFilters.sortOptions">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Sort By</mat-label>
+          <mat-select ngModel name="sortBy">
+            <mat-option *ngFor="let sortOption of displayedFilters.sortOptions" [value]="sortOption">
+              {{sortOption}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="example-button-row">
+
+        <button mat-raised-button color="primary" type="submit">Apply</button>
+      </div>
+
+    </form>
+
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,83 @@
+<h2>Add game</h2>
+<form class="example-form" #addGameForm="ngForm" (ngSubmit)="onSubmit(addGameForm)">
+
+  <mat-spinner style="height: 36px;" *ngIf="publishers.length <= 0"></mat-spinner>
+  <mat-form-field *ngIf="publishers.length > 0" appearance="outline" class="example-full-width">
+    <mat-label>Publisher</mat-label>
+    <mat-select required ngModel name="publisherId">
+      <mat-option *ngFor="let publisher of publishers" [value]="publisher.id">
+        {{publisher.companyName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-spinner style="height: 36px;" *ngIf="platforms.length <= 0"></mat-spinner>
+  <mat-form-field *ngIf="platforms.length > 0" appearance="outline" class="example-full-width">
+    <mat-label>Platform</mat-label>
+    <mat-select required [(ngModel)]="selectedPlatforms" name="platformsIds" multiple>
+      <mat-option *ngFor="let platform of platforms" [value]="platform.id">
+        {{platform.type}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-spinner style="height: 36px;" *ngIf="genres.length <= 0"></mat-spinner>
+  <mat-form-field *ngIf="genres.length > 0" appearance="outline" class="example-full-width">
+    <mat-label>Genre</mat-label>
+    <mat-select required [(ngModel)]="selectedGenres" name="genresIds" multiple>
+      <mat-option *ngFor="let genre of genres" [value]="genre.id">
+        {{genre.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input required matInput ngModel name="name" type="text">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Price</mat-label>
+    <input required matInput ngModel name="price" type="number" min="0" #price="ngModel">
+    <mat-error *ngIf="price.errors?.['min']">
+      Negative numbers are not allowed.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Unit In Stock</mat-label>
+    <input required matInput ngModel name="unitInStock" type="number" min="0" #stock="ngModel">
+    <mat-error *ngIf="stock.errors?.['min']">
+      Negative numbers are not allowed.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Publish Date</mat-label>
+    <input required matInput [matDatepicker]="picker" ngModel name="publishDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Alias</mat-label>
+    <input matInput ngModel name="gameAlias" type="text">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput ngModel name="description" type="text">
+  </mat-form-field>
+
+  <mat-checkbox ngModel name="discontinued" class="example-margin">Is discontinued</mat-checkbox>
+
+  <app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+  <div *ngIf="!isLoading" class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">Add</button>
+    <button type="button" (click)="closeBottomSheet()" style="margin-left: 16px;" mat-button>Cancel</button>
+  </div>
+
+</form>
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>

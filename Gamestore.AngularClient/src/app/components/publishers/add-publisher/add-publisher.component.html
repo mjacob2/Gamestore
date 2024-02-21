@@ -1,0 +1,30 @@
+<h2>Add Publisher</h2>
+
+<form class="example-form" #addPublisherForm="ngForm" (ngSubmit)="onSubmit(addPublisherForm)">
+
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Company name</mat-label>
+    <input required matInput ngModel name="companyName" type="text">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Home Page</mat-label>
+    <input required matInput ngModel name="homePage" type="text">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput ngModel name="description" type="text">
+  </mat-form-field>
+
+  <app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+  <div *ngIf="!isLoading" class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">Add</button>
+    <button type="button" (click)="closeBottomSheet()" style="margin-left: 16px;" mat-button>Cancel</button>
+  </div>
+
+</form>
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>

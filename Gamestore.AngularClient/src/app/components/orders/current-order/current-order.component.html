@@ -1,0 +1,62 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+<h1>Cart</h1>
+
+<div *ngIf="cart">
+
+  <mat-card class="card">
+
+    <mat-card-header>
+      <mat-card-subtitle>Created: {{cart.orderDate | date}}</mat-card-subtitle>
+      <mat-card-subtitle>Order ID: {{cart.id}}</mat-card-subtitle>
+      <mat-card-subtitle>Customer ID: {{cart.customerId}}</mat-card-subtitle>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <mat-card-title style="margin-top: 26px">Items in cart:</mat-card-title>
+
+      <ng-container *ngFor="let item of cart.orderItems">
+
+        <mat-card style="margin-top: 16px">
+          <mat-list>
+
+            <mat-list-item>
+              <mat-icon matListItemIcon>copyright</mat-icon>
+              <div matListItemTitle>{{item.productName}}</div>
+              <div matListItemLine>Game</div>
+            </mat-list-item>
+
+            <mat-list-item>
+              <mat-icon matListItemIcon>attach_money</mat-icon>
+              <div matListItemTitle>{{item.productPrice | currency}}</div>
+              <div matListItemLine>Price</div>
+            </mat-list-item>
+
+            <mat-list-item>
+              <mat-icon matListItemIcon>123</mat-icon>
+              <div matListItemTitle>{{item.quantity}}</div>
+              <div matListItemLine>Quantity</div>
+            </mat-list-item>
+
+          </mat-list>
+
+        </mat-card>
+      </ng-container>
+
+      <h3>SUM: {{ cart.sum }} </h3>
+      <h3>DISCOUNT: {{cart.discount | percent }}</h3>
+      <h1>TOTAL PRICE: {{ cart.totalPrice | currency }}</h1>
+
+    </mat-card-content>
+
+    <button style="position: fixed; right: 2em; bottom: 2em" routerLink="/makeOrder" class="bottom-right" mat-fab extended color="primary">
+      <mat-icon>add</mat-icon>
+      Make Order
+    </button>
+
+  </mat-card>
+
+</div>

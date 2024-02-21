@@ -1,0 +1,54 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+<h1>{{gameAlias}}</h1>
+
+<div *ngFor="let comment of comments">
+
+  <mat-card class="example-card" id="{{comment.id}}">
+
+    <mat-card-header>
+
+      <div mat-card class="example-header"></div>
+
+      <mat-card-title>{{comment.authorName}}</mat-card-title>
+
+      <mat-card-subtitle>ID: {{comment.id}}</mat-card-subtitle>
+      
+      <mat-card-subtitle *ngIf="comment.banUntil">Banned until: {{comment.banUntil | date:'short'}}</mat-card-subtitle>
+
+      <mat-card-subtitle *ngIf="comment.asReplyTo">
+        <a href="#"
+           (click)="scrollTo(getCommentIdAsString(comment.asReplyTo)); $event.preventDefault();"
+           style="color: blue; text-decoration: underline;">
+          As reply to: {{getComment(comment.asReplyTo)?.authorName ?? "A comment/quote was deleted"}}
+        </a>
+      </mat-card-subtitle>
+
+      <mat-card-subtitle *ngIf="comment.asQuoteTo">
+        <b>Quote: </b><i>{{getComment(comment.asQuoteTo)?.body ?? "A comment/quote was deleted"}}</i>
+      </mat-card-subtitle>
+
+    </mat-card-header>
+
+    <mat-card-content style="margin-top: 15px">
+      <p>
+        {{comment.body}}
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button (click)="openAddCommentBottomSheet(comment, commentType.reply)">REPLY</button>
+      <button mat-button (click)="openAddCommentBottomSheet(comment, commentType.quote)">QUOTE</button>
+      <button *ngIf="comment.canBeDeletedByUser" color="warn" mat-icon-button (click)="deleteComment(comment.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>
+
+<button style="position: fixed; right: 2em; bottom: 2em" (click)="openAddCommentBottomSheet()" class="bottom-right" mat-fab extended color="primary">
+  <mat-icon>add</mat-icon>
+  New Comment
+</button>

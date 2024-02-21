@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamestore.DataAccess", "Gamestore.DataAccess\Gamestore.DataAccess.csproj", "{09F9DE75-2F87-4D82-B77D-7153DC598D4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamestore.ApplicationServices", "Gamestore.ApplicationServices\Gamestore.ApplicationServices.csproj", "{EEFD7A16-2E2C-464C-A210-67BCF9BC97C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{6E369FCC-7A2C-41C5-80E4-8E80BE044447}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamestore.API", "Gamestore.API\Gamestore.API.csproj", "{D4338DA6-B214-4D66-ADC9-94DB958378F8}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Gamestore.AngularClient", "Gamestore.AngularClient\Gamestore.AngularClient.esproj", "{F76913B6-E1D1-40B3-88C7-8E15BE000399}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamestore.DataAccess.Mongo", "Gamestore.DataAccess.Mongo\Gamestore.DataAccess.Mongo.csproj", "{685E3F60-019A-4CA6-ABBC-B7BF935723F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09F9DE75-2F87-4D82-B77D-7153DC598D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09F9DE75-2F87-4D82-B77D-7153DC598D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09F9DE75-2F87-4D82-B77D-7153DC598D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09F9DE75-2F87-4D82-B77D-7153DC598D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEFD7A16-2E2C-464C-A210-67BCF9BC97C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEFD7A16-2E2C-464C-A210-67BCF9BC97C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEFD7A16-2E2C-464C-A210-67BCF9BC97C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEFD7A16-2E2C-464C-A210-67BCF9BC97C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E369FCC-7A2C-41C5-80E4-8E80BE044447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E369FCC-7A2C-41C5-80E4-8E80BE044447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E369FCC-7A2C-41C5-80E4-8E80BE044447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E369FCC-7A2C-41C5-80E4-8E80BE044447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4338DA6-B214-4D66-ADC9-94DB958378F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4338DA6-B214-4D66-ADC9-94DB958378F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4338DA6-B214-4D66-ADC9-94DB958378F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4338DA6-B214-4D66-ADC9-94DB958378F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76913B6-E1D1-40B3-88C7-8E15BE000399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76913B6-E1D1-40B3-88C7-8E15BE000399}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F76913B6-E1D1-40B3-88C7-8E15BE000399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76913B6-E1D1-40B3-88C7-8E15BE000399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76913B6-E1D1-40B3-88C7-8E15BE000399}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{685E3F60-019A-4CA6-ABBC-B7BF935723F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{685E3F60-019A-4CA6-ABBC-B7BF935723F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{685E3F60-019A-4CA6-ABBC-B7BF935723F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{685E3F60-019A-4CA6-ABBC-B7BF935723F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFBDB1B0-7BB7-4593-ABC9-F675491BC066}
+	EndGlobalSection
+EndGlobal

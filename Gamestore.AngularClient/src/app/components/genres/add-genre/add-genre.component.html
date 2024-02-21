@@ -1,0 +1,29 @@
+<h2>Add Genre</h2>
+
+<form class="example-form" #addGenreForm="ngForm" (ngSubmit)="onSubmit(addGenreForm)">
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput ngModel name="name" type="text">
+  </mat-form-field>
+
+  <mat-spinner style="height: 36px;" *ngIf="genres.length <= 0"></mat-spinner>
+  <mat-form-field *ngIf="genres.length > 0" appearance="outline" class="example-full-width">
+    <mat-label>Parent Genre</mat-label>
+    <mat-select ngModel name="parentGenreId">
+      <mat-option *ngFor="let genre of genres" [value]="genre.id">
+        {{genre.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+  <div *ngIf="!isLoading" class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">Add</button>
+    <button type="button" (click)="closeBottomSheet()" style="margin-left: 16px;" mat-button>Cancel</button>
+  </div>
+
+</form>
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>

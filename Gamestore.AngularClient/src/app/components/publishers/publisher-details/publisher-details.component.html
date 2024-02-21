@@ -1,0 +1,33 @@
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<app-error-card *ngIf="errorMessage" errorMessage="{{errorMessage}}"></app-error-card>
+
+<div *ngIf="publisher">
+
+  <h1>Publisher</h1>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>{{publisher.companyName}}</mat-card-title>
+      <mat-card-subtitle>ID: {{publisher.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-list>
+
+        <mat-list-item>
+          <mat-icon matListItemIcon>public</mat-icon>
+          <div matListItemTitle>{{publisher.homePage}}</div>
+          <div matListItemLine>homepage</div>
+        </mat-list-item>
+
+      </mat-list>
+
+      {{publisher.description}}
+
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
